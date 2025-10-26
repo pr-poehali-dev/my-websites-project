@@ -1,0 +1,18 @@
+{
+  "tests": [
+    {
+      "name": "Generate Python code",
+      "method": "POST",
+      "body": {
+        "prompt": "Create a function to add two numbers",
+        "language": "python"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "code": "string",
+        "language": "python"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

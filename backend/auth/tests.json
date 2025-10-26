@@ -1,0 +1,37 @@
+{
+  "tests": [
+    {
+      "name": "Create new user",
+      "method": "POST",
+      "body": {
+        "email": "test@example.com",
+        "name": "Test User"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "id": 2,
+        "email": "test@example.com",
+        "name": "Test User",
+        "is_admin": false,
+        "subscription": {
+          "is_active": false,
+          "expires_at": null
+        }
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Check admin user",
+      "method": "POST",
+      "body": {
+        "email": "admin@codegen.ai",
+        "name": "Admin"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "is_admin": true
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

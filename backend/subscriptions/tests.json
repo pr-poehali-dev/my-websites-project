@@ -1,0 +1,44 @@
+{
+  "tests": [
+    {
+      "name": "Get all users with subscriptions",
+      "method": "GET",
+      "expectedStatus": 200,
+      "expectedBody": [
+        {
+          "id": 1,
+          "email": "admin@codegen.ai",
+          "name": "Admin",
+          "is_admin": true,
+          "subscription": {
+            "is_active": true
+          }
+        },
+        {
+          "id": 2,
+          "email": "test@example.com",
+          "name": "Test User",
+          "is_admin": false,
+          "subscription": {
+            "is_active": false,
+            "expires_at": null
+          }
+        }
+      ],
+      "bodyMatcher": "contains"
+    },
+    {
+      "name": "Create subscription",
+      "method": "POST",
+      "body": {
+        "user_id": 1
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "is_active": true,
+        "expires_at": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
